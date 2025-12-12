@@ -37,10 +37,30 @@ str(A.data)
 head(A.data)
 
 #Cleaning B
+B.data$PH<-ifelse(B.data$PH=="N", 0,1)
+B.data$MH<-ifelse(B.data$MH=="N", 0,1)
+B.data$Belief<-ifelse(B.data$Belief=="N", 0,1)
+B.data$Smoker<-ifelse(B.data$Smoker=="N", 0, ifelse(B.data$Smoker=="Current", 1, ifelse(B.data$Smoker=="Y", 1, B.data$Smoker)))
+B.data$SES5<-ifelse(B.data$SES5)
+B.data$SES5 <- ifelse(
+  B.data$SES5 == "L1", 1,
+  ifelse(B.data$SES5 == "L2", 2,
+         ifelse(B.data$SES5 == "L3", 3,
+                ifelse(B.data$SES5 == "L4", 4,
+                       ifelse(B.data$SES5 == "L5", 5, B.data$SES5)
+                )
+         )
+  )
+)
+
 
 #Cleaning P
 
 #Cleaning H
+H.data$PH<-ifelse(H.data$Physical=="No", 0,1)
+H.data$MH<-ifelse(H.data$Mental=="No", 0,1)
+H.data$Smoker<-ifelse(H.data$Smoker=="No", 0,1)
+H.data$Belief<-ifelse(H.data$Belief=="No", 0,1)
 
 
 #Merging Data
