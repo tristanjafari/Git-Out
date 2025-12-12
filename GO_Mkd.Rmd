@@ -1,18 +1,26 @@
 ---
 title: "Git Out Markdown"
 author: "Git Out"
-output:
-  prettydoc::html_pretty:
-  theme: architect
-  toc: true
-date: "12 Dec 2025"
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-DATA <- read.csv(here("data.csv"))
+install.packages("prettydoc")
+install.packages("ggplot2")
+install.packages("kableExtra")
 library(ggplot2)
 library(kableExtra)
+library(prettydoc)
+install.packages("openxlsx")
+library(openxlsx)
+install.packages("dplyr")
+library(dplyr)
+A.data <- read.xlsx("data/A.xlsx")
+B.data <- read.xlsx("data/B.xlsx")
+P.data <- read.xlsx("data/P.xlsx")
+H.data <- read.csv("data/H.csv")
+SE.data <- read.xlsx("data/SouthEast.xlsx")
 ```
 
 #Physical and Mental Health Outcomes Across Research Sites
