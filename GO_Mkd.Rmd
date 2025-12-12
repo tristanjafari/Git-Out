@@ -12,7 +12,7 @@ date: "12 Dec 2025"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-games <- read.csv(here("data.csv"))
+DATA <- read.csv(here("data.csv"))
 library(ggplot2)
 library(kableExtra)
 ```
