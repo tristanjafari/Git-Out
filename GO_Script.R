@@ -2,8 +2,8 @@
 #Hi tristan I also love my group x
 
 install.packages("openxlsx")
-library(openxlsx)
 install.packages("dplyr")
+library(openxlsx)
 library(dplyr)
 A.data <- read.xlsx("data/A.xlsx")
 B.data <- read.xlsx("data/B.xlsx")
@@ -96,27 +96,58 @@ SE.data$SES5 <- ifelse(
          )
   ) )
 
+#Subsetting Data
+A <- subset(A.data, select = c("PH", "MH", "Belief", "Smoker", "Age"))
+B <- subset(B.data, select = c("PH", "MH", "Belief", "Smoker", "Age"))
+P <- subset(P.data, select = c("PH", "MH", "Belief", "Smoker", "Age"))
+H <- subset(H.data, select = c("PH", "MH", "Belief", "Smoker", "Age"))
+SE <- subset(SE.data, select = c("PH", "MH", "Belief", "Smoker", "Age"))
+
+#Ensuring Data
+A$PH <- as.numeric(A$PH)
+A$MH <- as.numeric(A$MH)
+A$Belief <- as.numeric(A$Belief)
+A$Smoker <- as.numeric(A$Smoker)
+A$Age <- as.numeric(A$Age)
+
+B$PH <- as.numeric(B$PH)
+B$MH <- as.numeric(B$MH)
+B$Belief <- as.numeric(B$Belief)
+B$Smoker <- as.numeric(B$Smoker)
+B$Age <- as.numeric(B$Age)
+
+P$PH <- as.numeric(P$PH)
+P$MH <- as.numeric(P$MH)
+P$Belief <- as.numeric(P$Belief)
+P$Smoker <- as.numeric(P$Smoker)
+P$Age <- as.numeric(P$Age)
+
+H$PH <- as.numeric(H$PH)
+H$MH <- as.numeric(H$MH)
+H$Belief <- as.numeric(H$Belief)
+H$Smoker <- as.numeric(H$Smoker)
+H$Age <- as.numeric(H$Age)
+
+SE$PH <- as.numeric(SE$PH)
+SE$MH <- as.numeric(SE$MH)
+SE$Belief <- as.numeric(SE$Belief)
+SE$Smoker <- as.numeric(SE$Smoker)
+SE$Age <- as.numeric(SE$Age)
+
 
 #Merging Data
-A <- subset(A.data, select = c("PH", "MH", "Belief", "Smoker", "Age", "Gender"))
-B <- subset(B.data, select = c("PH", "MH", "Belief", "Smoker", "Age", "Gender"))
-P <- subset(P.data, select = c("PH", "MH", "Belief", "Smoker", "Age", "Gender"))
-H <- subset(H.data, select = c("PH", "MH", "Belief", "Smoker", "Age", "Gender"))
-SE <- subset(SE.data, select = c("PH", "MH", "Belief", "Smoker", "Age", "Gender"))
-
-Combined.Data <- bind_rows(A, B, H, P, SE)
+Combined <- bind_rows(A, B, H, P, SE)
 
 
 #Binomial Regression
 
 
 model <- glm(
-  belief ~ MH + PH,
+  Belief ~ MH + PH,
   data = Combined,
   family = binomial
 )
 summary(model)
-
 
 
 # Crude Prevalence
@@ -143,14 +174,14 @@ mh_prevalence
 
 model_mh_prev <- glm(
   MH ~ Age + Smoker + Belief,
-  data = df,
+  data = Combined,
   family = binomial
 )
 summary(model_mh_prev)
 
 model_ph_prev <- glm(
   PH ~ Age + Smoker + Belief,
-  data = df,
+  data = Combined,
   family = binomial
 )
 summary(model_ph_prev)
