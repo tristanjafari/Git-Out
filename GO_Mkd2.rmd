@@ -1,0 +1,23 @@
+---
+title: "GO_Mkd2"
+output: html_document
+date: "2025-12-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#Physical and Mental Health Outcomes Across Research Sites
+
+
+##Cleaning A Example
+
+##Binomial Analysis
+
+##Secondary Analysis
+
+#Conclusion
+
+There are some sick people. We can't save them all. 
