@@ -108,3 +108,49 @@ Combined.Data <- bind_rows(A, B, H, P, SE)
 
 
 #Binomial Regression
+
+
+model <- glm(
+  belief ~ MH + PH,
+  data = Combined,
+  family = binomial
+)
+summary(model)
+
+
+
+# Crude Prevalence
+
+# Total number of participants
+n_total <- nrow(Combined)
+
+# Physical health cases and total
+ph_cases <- sum(Combined$PH == 1, na.rm = TRUE)
+ph_total <- sum(!is.na(Combined$PH))
+ph_prevalence <- ph_cases / ph_total
+
+# Mental health cases and total
+mh_cases <- sum(Combined$MH == 1, na.rm = TRUE)
+mh_total <- sum(!is.na(Combined$MH))
+mh_prevalence <- mh_cases / mh_total
+
+# Print prevalence
+ph_prevalence
+mh_prevalence
+
+
+# Prevalence While Accounting For Other Factors
+
+model_mh_prev <- glm(
+  MH ~ Age + Smoker + Belief,
+  data = df,
+  family = binomial
+)
+summary(model_mh_prev)
+
+model_ph_prev <- glm(
+  PH ~ Age + Smoker + Belief,
+  data = df,
+  family = binomial
+)
+summary(model_ph_prev)
