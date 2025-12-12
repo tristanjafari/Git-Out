@@ -14,10 +14,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ##Cleaning A Example
 
+(Look in the code)
+
 ##Binomial Analysis
+
+(Look and run the code)
 
 ##Secondary Analysis
 
+(Look and run the code)
+
+
 #Conclusion
+
 
 There are some sick people. We can't save them all. 
