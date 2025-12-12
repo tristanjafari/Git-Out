@@ -1,6 +1,6 @@
 # Git-Out
 
-Get Out is a team comprised of:
+Git Out is a team comprised of:
 
 *Julia (JuJu) Eden
 *Tristan (IceRabbit) Jafari
