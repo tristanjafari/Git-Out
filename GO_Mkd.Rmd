@@ -1,6 +1,5 @@
 ---
 title: "Git Out Markdown"
-output: html_document
 author: "Git Out"
 output:
   prettydoc::html_pretty:
